@@ -1,1 +1,9 @@
 <h2>Index Page</h2>
+
+<ul>
+<% @drivers.each do |driver|%>
+  <li>
+  <%= link_to driver.name, driver_path(driver.id)%>
+  </li>
+<% end %>
+</ul>

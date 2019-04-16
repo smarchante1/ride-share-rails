@@ -19,12 +19,26 @@ class PassengersController < ApplicationController
     if is_successful
       redirect_to passengers_path
     else
-      @passenger = passenger
+    #   @passenger = @passenger
       render :new
     end
   end
 
-  
+  def edit
+    @passenger = Passenger.find_by(id: params[:id])
+  end
+
+  def update
+    passenger = Passenger.find(params[:id])
+    is_successful= passenger.update(passenger_params)
+
+    if is_successful
+      redirect_to passengers_path
+    else
+      @passenger = passenger
+      render :edit
+    end
+  end
 
   private
 

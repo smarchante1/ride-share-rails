@@ -8,6 +8,16 @@ class DriversController < ApplicationController
     @driver = Driver.find_by(id: driver_id)
   end
 
+  def new
+    @driver = Driver.new
+  end
+
+  def create
+    @driver = Driver.new(driver_params)
+    @driver.save
+    redirect_to driver_path
+  end
+
   private
 
   def driver_params

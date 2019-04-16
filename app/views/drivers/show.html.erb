@@ -19,5 +19,5 @@
 <% end %>
 </ul>
 
-
+<%= link_to "Delete driver", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure you want to delete that driver?"}%>
 <%= link_to "Back to list of all driver", drivers_path %>

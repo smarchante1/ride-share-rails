@@ -20,6 +20,7 @@
 </ul>
 
 <h3><%= "Driver total earnings #{@driver.total_earnings}"%></h3>
+<h3><%= "Driver average rating #{@driver.average_rating}"%></h3>
 
 <%= link_to "Delete driver", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure you want to delete that driver?"}%>
 <%= link_to "Edit driver", edit_driver_path(@driver.id) %>

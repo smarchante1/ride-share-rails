@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   post "/drivers", to: "drivers#create"
 
   get "/drivers/:id", to: "drivers#show", as: "driver" #show
+
+  get "/drivers/:id/edit", to: "drivers#edit", as: "edit_driver"
+  patch "/drivers/:id", to: "drivers#update"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

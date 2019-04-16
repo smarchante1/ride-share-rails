@@ -1,1 +1,20 @@
-<h2>Show Page</h2>
+<h2><%= @driver.name%></h2>
+
+<ul>
+<% @driver.trips.each do |trip| %>
+  <li> 
+  <%= "Trip Date: #{trip.date}"%>
+  </li>
+     <li> 
+  <%= "Passenger Name: #{Passenger.find(trip.passenger_id).name}"%>
+  </li>
+     <li> 
+  <%= "Price: #{trip.cost}"%>
+  </li>
+     <li> 
+  <%= "Rating: #{trip.rating}"%>
+  </li>
+  <%# link to edit 
+  link to delete %>
+<% end %>
+</ul>

@@ -19,7 +19,6 @@ class PassengersController < ApplicationController
     if is_successful
       redirect_to passengers_path
     else
-    #   @passenger = @passenger
       render :new
     end
   end
@@ -38,6 +37,13 @@ class PassengersController < ApplicationController
       @passenger = passenger
       render :edit
     end
+  end
+
+  def destroy
+    passenger = Passenger.find_by(id: params[:id])
+    passenger.destroy
+
+    redirect_to passengers_path
   end
 
   private

@@ -19,7 +19,7 @@ class TripsController < ApplicationController
       passenger: passenger,
       driver: driver,
       date: Time.now.strftime("%Y-%d-%m"),
-      cost: Random.new(10000), #random number between 0 - 10000 cents (0-100 dollars)
+      cost: rand(200..10000), #random number between 200 - 10000 cents (2-100 dollars)
     )
 
     is_successful = @trip.save

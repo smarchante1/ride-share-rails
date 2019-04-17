@@ -1,0 +1,30 @@
+
+<h2><%= "Trip ##{@trip.id}"%></h2>
+
+
+<ul>
+
+  <li> 
+  <%= "Trip ID: #{@trip.id}"%>
+  </li>
+  <li> 
+  <%= "Trip Date: #{@trip.date}"%>
+  </li>
+  <li> 
+  <%= "Driver Name: #{Driver.find(@trip.driver_id).name}"%>
+  </li>
+   <li> 
+  <%= "Passenge Name: #{Passenger.find(@trip.passenger_id).name}"%>
+  </li>
+     <li> 
+  <%= "Price: $#{@trip.cost / 100}"%>
+  </li>
+     <li> 
+  <%= "Rating: #{@trip.rating}"%>
+  </li>
+
+</ul>
+
+<%= link_to "Back to All Trips", passenger_trips_path%>
+
+<%= link_to "Delete Trip", trip_path, method: :delete %>

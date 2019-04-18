@@ -5,8 +5,6 @@
 </div>
 
 
-
-
 <% nil_trips = @passenger.trips.where(rating: nil) %>
 <%# add logic to change driver status back to true%>
 <% if nil_trips.length > 0 %>
@@ -26,7 +24,7 @@
 <ul>
 <% @passenger.trips.each do |trip| %>
   <li> 
-  <%= "Trip ID: #{trip.id}"%>
+  <%= link_to "Trip ID: #{trip.id}", passenger_trip_path(@passenger.id, trip.id)%>
   </li>
   <li> 
   <%= "Trip Date: #{trip.date}"%>

@@ -1,7 +1,14 @@
 <h2><%= @driver.name%></h2>
 
+<div>
+  <img src="http://placekitten.com/200/300" alt="A kitty user">
+</div>
+
 <ul>
 <% @driver.trips.each do |trip| %>
+  <li> 
+  <%= link_to "Trip ID: #{trip.id}", passenger_trip_path(trip.passenger_id, trip.id)%>
+  </li>
   <li> 
   <%= "Trip Date: #{trip.date}"%>
   </li>

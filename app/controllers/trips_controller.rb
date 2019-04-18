@@ -24,7 +24,7 @@ class TripsController < ApplicationController
   def create
     #find passenger
     passenger = Passenger.find_by(id: params[:passenger_id])
-    driver = Driver.all.shuffle.first
+    driver = Driver.find_by(status: true)
     #find driver
     @trip = Trip.new(
       passenger: passenger,
@@ -36,7 +36,9 @@ class TripsController < ApplicationController
     is_successful = @trip.save
 
     if is_successful
-      redirect_to passenger_path(passenger.id)
+      driver.status = false
+      driver.save
+      redirect_to passenger_path(@trip.passenger_id)
     else
       render :new
     end

@@ -23,14 +23,14 @@ describe PassengersController do
       # Assert
       must_respond_with :success
     end
-    # it "will redirect for an invalid passenger" do # add redirect to show action
+    it "will redirect for an invalid passenger" do # add redirect to show action
 
-    #   # Act
-    #   get passenger_path(-1)
+      # Act
+      get passenger_path(-1)
 
-    #   # Assert
-    #   must_respond_with :redirect
-    # end
+      # Assert
+      must_respond_with :redirect
+    end
   end
 
   describe "edit" do
@@ -42,16 +42,16 @@ describe PassengersController do
       # Assert
       must_respond_with :success
     end
-    # it "will respond with redirect when attempting to edit a nonexistant passenger" do #add redirect
+    it "will respond with redirect when attempting to edit a nonexistant passenger" do #add redirect
 
-    #   # Arrange
-    #   id = -1
-    #   # Act
-    #   get edit_passenger_path(id)
+      # Arrange
+      id = -1
+      # Act
+      get edit_passenger_path(id)
 
-    #   # Assert
-    #   must_respond_with :redirect
-    # end
+      # Assert
+      must_respond_with :redirect
+    end
   end
 
   describe "update" do
@@ -142,15 +142,15 @@ describe PassengersController do
       must_redirect_to passengers_path
     end
 
-    # it "responds with a not found error if driver id is invalid" do ##need a redirect in show
-    #   # Arrange
-    #   id = -1
+    it "responds with a not found error if driver id is invalid" do
+      # Arrange
+      id = -1
 
-    #   # Act
-    #   delete passenger_path(id)
+      # Act
+      delete passenger_path(id)
 
-    #   # Assert
-    #   must_respond_with :not_found
-    # end
+      # Assert
+      must_respond_with :not_found
+    end
   end
 end

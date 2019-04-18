@@ -14,25 +14,25 @@ describe DriversController do
     end
   end
 
-  # describe "show" do # add redirect to show
-  ##check out divided by 0 error
-  # it "can get a valid driver" do
+  describe "show" do
+    # test failing due to a / 0 error?
+    it "can get a valid driver" do
 
-  #   # Act
-  #   get driver_path(driver.id)
+      # Act
+      get driver_path(driver.id)
 
-  #   # Assert
-  #   must_respond_with :success
-  # end
-  # it "will redirect for an invalid driver" do # add redirect to show
+      # Assert
+      must_respond_with :success
+    end
+    it "will redirect for an invalid driver" do
 
-  #   # Act
-  #   get driver_path(-1)
+      # Act
+      get driver_path(-1)
 
-  #   # Assert
-  #   must_respond_with :redirect
-  # end
-  # end
+      # Assert
+      must_respond_with :redirect
+    end
+  end
 
   describe "edit" do
     it "can get the edit page for an existing driver" do
@@ -43,16 +43,17 @@ describe DriversController do
       # Assert
       must_respond_with :success
     end
-    # it "will respond with redirect when attempting to edit a nonexistant driver" do #add redirect
 
-    #   # Arrange
-    #   id = -1
-    #   # Act
-    #   get edit_driver_path(id)
+    it "will respond with redirect when attempting to edit a nonexistant driver" do
 
-    #   # Assert
-    #   must_respond_with :redirect
-    # end
+      # Arrange
+      id = -1
+      # Act
+      get edit_driver_path(id)
+
+      # Assert
+      must_respond_with :redirect
+    end
   end
 
   describe "update" do
@@ -142,15 +143,15 @@ describe DriversController do
       must_respond_with :redirect
       must_redirect_to drivers_path
     end
-    # it "responds with a not found error if driver id is invalid" do ##need a redirect in show
-    #   # Arrange
-    #   id = -1
+    it "responds with a not found error if driver id is invalid" do
+      # Arrange
+      id = -1
 
-    #   # Act
-    #   delete driver_path(id)
+      # Act
+      delete driver_path(id)
 
-    #   # Assert
-    #   must_respond_with :not_found
-    # end
+      # Assert
+      must_respond_with :not_found
+    end
   end
 end

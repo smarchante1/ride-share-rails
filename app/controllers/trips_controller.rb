@@ -36,7 +36,7 @@ class TripsController < ApplicationController
     is_successful = @trip.save
 
     if is_successful
-      driver.status = false
+      driver.status = false # revert back to true when trip is rated
       driver.save
       redirect_to passenger_path(@trip.passenger_id)
     else

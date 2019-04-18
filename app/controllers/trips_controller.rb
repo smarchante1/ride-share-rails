@@ -70,16 +70,16 @@ class TripsController < ApplicationController
     end
   end
 
-  def rating
-    trip = Trip.find_by(id: params[:id])
-    is_successful = trip.update(rating: params[:rating])
+  # def rating
+  #   trip = Trip.find_by(id: params[:id])
+  #   is_successful = trip.update(rating: params[:rating])
 
-    if is_successful
-      redirect_to passengers_path(trip.passenger_id)
-    else
-      render :edit
-    end
-  end
+  #   if is_successful
+  #     redirect_to passengers_path(trip.passenger_id)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   private
 

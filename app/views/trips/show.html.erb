@@ -11,7 +11,7 @@
   <%= "Trip Date: #{@trip.date}"%>
   </li>
   <li> 
-  <%= "Driver Name: #{Driver.find(@trip.driver_id).name}"%>
+  <%= link_to "Driver Name: #{Driver.find(@trip.driver_id).name}", driver_path(@trip.driver_id)%>
   </li>
    <li> 
   <%= "Passenge Name: #{Passenger.find(@trip.passenger_id).name}"%>

@@ -10,6 +10,21 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header class= "head-container">
+  <h1 class="logo">Marganie RideShare</h1>
+    <nav class="nav-container">
+      <ul>
+      <li><%= link_to "View All Passengers", passengers_path %></li>
+      <li><%= link_to "View All Drivers", drivers_path %></li>
+      <li><%= link_to "Make a New Passenger", new_passenger_path %></li>
+      <li><%= link_to "Make a New Driver", new_driver_path %></li>
+      </ul>
+    </nav>
+  </header>
+
   </body>
+
+  <main>
+    <%= yield %>
+  </main>
 </html>

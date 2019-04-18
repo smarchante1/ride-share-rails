@@ -6,7 +6,7 @@
   <%= "Trip Date: #{trip.date}"%>
   </li>
      <li> 
-  <%= "Passenger Name: #{Passenger.find(trip.passenger_id).name}"%>
+  <%= link_to "Passenger Name: #{Passenger.find(trip.passenger_id).name}", passenger_path(trip.passenger_id)%>
   </li>
      <li> 
   <%= "Price: $#{trip.cost / 100}"%>

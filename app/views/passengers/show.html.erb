@@ -11,10 +11,10 @@
   <li> 
   <%= link_to "Driver Name: #{Driver.find(trip.driver_id).name}", driver_path(trip.driver_id)%>
   </li>
-     <li> 
+   <li> 
   <%= "Price: $#{trip.cost / 100}"%>
   </li>
-     <li> 
+   <li> 
   <%= "Rating: #{trip.rating}"%>
   </li>
   <%# link to edit 

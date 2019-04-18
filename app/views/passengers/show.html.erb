@@ -4,22 +4,24 @@
   <img src="http://placekitten.com/200/300" alt="A kitty user">
 </div>
 
-<% trips = Trip.where(id: @passenger.id) %>
-<% trip = trips.first %>
+
+
+
+<% nil_trips = @passenger.trips.where(rating: nil) %>
 <%# add logic to change driver status back to true%>
-<%# <% if !trip.rating.nil? %> 
-  <%# <%= form_with model: @passenger, class: "rating" do |f| %> 
+<% if nil_trips.length > 0 %>
+  <%= form_with model: nil_trips.first, class: "rating" do |f| %> 
   
-  <%# <%= f.label :rating %>
-  <%# <%= f.text_field :rating %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
 
- <%# <%= f.submit "Submit Rating", class: "rating-save-button" %>  
+ <%= f.submit "Submit Rating", class: "rating-save-button" %>  
 
-<%# <%end%> 
+<% end %>
 
-<%# <% else %> 
+<% else %> 
   <%= link_to "Request Ride", passenger_trips_path(@passenger.id), method: :post %>
-<%# <% end %>
+<% end %>
 
 <ul>
 <% @passenger.trips.each do |trip| %>

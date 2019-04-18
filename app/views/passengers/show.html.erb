@@ -1,5 +1,9 @@
 <h2><%= @passenger.name%></h2>
 
+<div>
+  <img src="http://placekitten.com/200/300" alt="A kitty user">
+</div>
+
 <% trips = Trip.where(id: @passenger.id) %>
 <% trip = trips.first %>
 
@@ -15,7 +19,7 @@
 
 <%# <% else %> 
   <%= link_to "Request Ride", passenger_trips_path(@passenger.id), method: :post %>
-<%# <% end %> 
+<%# <% end %>
 
 <ul>
 <% @passenger.trips.each do |trip| %>

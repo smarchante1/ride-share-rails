@@ -1,8 +1,8 @@
 class PassengersController < ApplicationController
   def index
-    @passengers = Passenger.all.order(:id)
+    @passengers = Passenger.paginate(:page => params[:page], :per_page => 10)
   end
-    
+  
   def show
     @passenger = Passenger.find_by(id: params[:id])
     @trips = @passenger.trips

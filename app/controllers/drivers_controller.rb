@@ -1,6 +1,10 @@
 class DriversController < ApplicationController
+  # def index
+  #   @drivers = Driver.all.order(:id)
+  # end
+
   def index
-    @drivers = Driver.all.order(:id)
+    @drivers = Driver.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -19,7 +23,6 @@ class DriversController < ApplicationController
     if is_successful
       redirect_to drivers_path
     else
-      @driver = driver
       render :new
     end
   end

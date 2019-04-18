@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  # root to: "passengers#index" #REMEMBER TO CHANGE THIS TO HOMEPAGE
+  # root to: "homepage#index"
+  resources :homepage
   resources :drivers
   # Routes for trips # cut down some of these using only syntax
   resources :trips

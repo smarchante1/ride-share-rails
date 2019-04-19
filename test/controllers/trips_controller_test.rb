@@ -106,11 +106,11 @@ describe TripsController do
       must_respond_with :redirect
     end
 
-    # it "should redirect to the edit page if given an invalid trip " do
-    #   patch trip_path(-1), params: trip_hash
+    it "should redirect to the edit page if given an invalid trip " do
+      patch trip_path(-1), params: trip_hash
 
-    #   must_respond_with :redirect
-    # end
+      must_respond_with :redirect
+    end
   end
 
   describe "destroy" do

@@ -15,7 +15,8 @@
  */
 
  body{
-  margin: 0px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
+  font-family: Arial, Helvetica, sans-serif;
  }
 
 .logo{
@@ -28,8 +29,23 @@
   padding-left: 4px;
 }
 
+.logo a {
+  text-decoration: none; 
+  color: white;
+}
+
+.logo a:hover {
+  text-decoration: underline;
+}
+
 .head-container{
   background-color:  rgb(117, 53, 155);
+}
+
+footer {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .nav-container{
@@ -53,7 +69,7 @@
   
 }
   
-.nav-container ul li a:hover{
+.nav-container ul li a:hover {
   color: rgb(252, 191, 117);
   text-decoration: none;
 }
@@ -86,3 +102,28 @@
   margin: 20px;
 }
 
+.show-table a, .lower-links a, .request-rate a {
+  text-decoration: none;
+  color: black;
+}
+
+.show-table a:hover, .lower-links a:hover, .request-rate a:hover {
+  text-decoration: underline;
+  color: rgb(117, 53, 155);
+}
+
+/* SHOW PAGES */
+
+.lower-links a {
+  padding: 20px;
+  border: 1px solid rgb(117, 53, 155);
+
+}
+
+.lower-links {
+  padding: 20px;
+}
+
+.profile-pics, .charges, .stats, .name, .request-rate {
+  padding-left: 20px;
+}

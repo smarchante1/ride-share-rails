@@ -1,17 +1,6 @@
 
 
 class TripsController < ApplicationController
-  # def index
-  # if params[:passenger_id] #if not nil
-  #   @trips = Trip.where(passenger_id: Passenger.find_by(id: params[:passenger_id])) #find trips from that passenger
-  # else
-  #   # params[:driver_id]
-  #   @trips = Trip.where(driver_id: Driver.find_by(id: params[:driver_id])) #find trips from that driver
-  #   # else
-  #   #   @trip= Trip.all.order(:title)
-  # end
-  # end
-
   def show
     @trip = Trip.find_by(id: params[:id])
     unless !@trip.nil?
@@ -24,21 +13,19 @@ class TripsController < ApplicationController
   end
 
   def create
-    #find passenger
     passenger = Passenger.find_by(id: params[:trip][:passenger_id])
     driver = Driver.find_by(status: true)
-    #find driver
     @trip = Trip.new(
       passenger: passenger,
       driver: driver,
       date: Time.now.strftime("%Y-%d-%m"),
-      cost: rand(200..10000), #random number between 200 - 10000 cents (2-100 dollars)
+      cost: rand(200..10000),
     )
 
     is_successful = @trip.save
 
     if is_successful
-      driver.status = false # revert back to true when trip is rated
+      driver.status = false 
       driver.save
       redirect_to passenger_path(@trip.passenger_id)
     else

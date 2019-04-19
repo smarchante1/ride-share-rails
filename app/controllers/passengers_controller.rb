@@ -5,7 +5,6 @@ class PassengersController < ApplicationController
 
   def show
     @passenger = Passenger.find_by(id: params[:id])
-    # @trips = @passenger.trips # was making test fail
 
     if @passenger.nil?
       redirect_to passengers_path

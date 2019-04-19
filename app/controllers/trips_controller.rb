@@ -1,3 +1,5 @@
+require 'pry'
+
 class TripsController < ApplicationController
   # def index
   # if params[:passenger_id] #if not nil
@@ -12,9 +14,9 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find_by(id: params[:id])
-    # if @trip.nil?
-    #   head :not_found
-    # end
+    unless @trip.nil?
+      head :not_found
+    end
   end
 
   def new
@@ -23,7 +25,7 @@ class TripsController < ApplicationController
 
   def create
     #find passenger
-    passenger = Passenger.find_by(id: params[:passenger_id])
+    passenger = Passenger.find_by(id: params[:trip][:passenger_id])
     driver = Driver.find_by(status: true)
     #find driver
     @trip = Trip.new(
@@ -46,6 +48,8 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
+     
+    redirect_to trips_path if @trip.nil?
   end
 
   def update
@@ -55,7 +59,7 @@ class TripsController < ApplicationController
     if is_successful
       redirect_to passenger_path(trip.passenger_id)
     else
-      render :edit
+      redirect_to trips_path
     end
   end
 

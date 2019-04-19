@@ -1,4 +1,5 @@
 require "test_helper"
+require 'pry'
 
 describe TripsController do
   before do
@@ -75,7 +76,7 @@ describe TripsController do
   end
 
   describe "edit" do
-    it "should edit trip" do
+    it "can get to the edit trip view for existing trip" do
       get edit_trip_path(Trip.first.id)
 
       must_respond_with :success
@@ -83,16 +84,39 @@ describe TripsController do
 
     it "should respond with 404 if the trip doesn't exist" do
       get edit_trip_path(-1)
-
-      must_respond_with :not_found
+      
+      must_respond_with 302
     end
   end
 
   describe "update" do
-    # Your tests go here
+    trip = Trip.first
+      
+    trip_hash = {
+       trip: {
+        date: "April 19, 2019",
+        cost: 1445,
+        passenger_id: Passenger.last.id,
+        driver_id: Driver.last.id
+      }
+    }
+
+    it "should update existing trip" do
+      expect{
+        patch trip_path(trip.id), params:trip_hash
+      }.wont_change 'Trip.count'
+
+      must_respond_with :redirect
+    end
+
+    # it "should redirect to the edit page if given an invalid trip " do 
+    #   patch trip_path(-1), params: trip_hash
+
+    #   must_respond_with :redirect
+    # end
   end
 
   describe "destroy" do
-    # Your tests go here
+    
   end
 end

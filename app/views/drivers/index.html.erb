@@ -4,9 +4,11 @@
 
 <ul class="show-all-list">
 <% @drivers.each do |driver|%>
+
   <li>
   <%= link_to driver.name, driver_path(driver.id)%>
   </li>
+  
 <% end %>
 </ul>
 

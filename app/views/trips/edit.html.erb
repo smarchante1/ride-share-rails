@@ -9,13 +9,8 @@
 <% end %>
 
 
-
-
 <%= form_with model: @trip, class: "edit-trip" do |f| %>
-
   <p><%= "Use this form to edit a trip" %></p>
-
-<%# add date? %>
     <%= f.label :cost%>
     <%= f.text_field :cost%>
 
@@ -25,9 +20,5 @@
     <%= f.label :driver%> 
     <%= f.select :driver_id, Driver.all.map {|driver| [driver.name, driver.id] } %>
 
-<%# add name?  %>
-
-
   <%= f.submit "Edit trip", class: "trip-form__submit-btn" %>
-
 <% end %>

@@ -23,7 +23,7 @@ describe PassengersController do
       # Assert
       must_respond_with :success
     end
-    it "will redirect for an invalid passenger" do # add redirect to show action
+    it "will redirect for an invalid passenger" do
 
       # Act
       get passenger_path(-1)
@@ -66,7 +66,7 @@ describe PassengersController do
 
       # Act
       patch passenger_path(passenger.id), params: passenger_hash
-      passenger.reload #use .reload to access database again (fresh data)
+      passenger.reload 
 
       # Assert
       expect(passenger.name).must_equal "Another Sample"
@@ -123,7 +123,7 @@ describe PassengersController do
       expect(new_passenger.phone_number).must_equal passenger_hash[:passenger][:phone_number]
 
       must_respond_with :redirect
-      must_redirect_to passengers_path #change this if we decide to redirect elsewhere
+      must_redirect_to passengers_path 
     end
   end
 

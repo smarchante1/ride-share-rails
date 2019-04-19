@@ -117,6 +117,20 @@ describe TripsController do
   end
 
   describe "destroy" do
-    
+    it "can delete a trip" do 
+      expect {
+        delete trip_path(Trip.first.id)
+      }.must_change "Trip.count", -1
+
+      must_respond_with :redirect
+    end
+
+    it "should respond with a 404 if the trip is not found" do
+      expect {
+        delete trip_path(-1)
+      }.wont_change "Trip.count"
+
+      must_respond_with :not_found
+    end
   end
 end

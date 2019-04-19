@@ -102,12 +102,12 @@ footer {
   margin: 20px;
 }
 
-.show-table a, .lower-links a, .request-rate a {
+.show-table a, .lower-links a, .request-rate a, .show-all-list li a {
   text-decoration: none;
   color: black;
 }
 
-.show-table a:hover, .lower-links a:hover, .request-rate a:hover {
+.show-table a:hover, .lower-links a:hover, .request-rate a:hover, .show-all-list li a:hover {
   text-decoration: underline;
   color: rgb(117, 53, 155);
 }
@@ -125,5 +125,30 @@ footer {
 }
 
 .profile-pics, .charges, .stats, .name, .request-rate {
+  padding-left: 20px;
+}
+
+/* INDEX PAGES */
+.show-all-list li {
+  padding: 5px;
+}
+
+/* HOMEPAGE */
+.homepage {
+  padding-left: 20px;
+  padding-bottom: 300px;
+}
+
+/* FORMS */
+
+.form {
+  border: 2px solid rgb(117, 53, 155);
+  padding: 20px;
+  margin-left: 20px;
+  width: 600px;
+  margin-bottom: 300px;
+}
+
+.form-heading {
   padding-left: 20px;
 }

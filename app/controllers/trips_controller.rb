@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class TripsController < ApplicationController
   # def index
@@ -48,7 +48,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(id: params[:id])
-     
+
     redirect_to trips_path if @trip.nil?
   end
 

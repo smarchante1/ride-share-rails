@@ -1,5 +1,4 @@
 require "test_helper"
-require 'pry'
 
 describe TripsController do
   before do
@@ -19,15 +18,13 @@ describe TripsController do
 
       must_respond_with 302
     end
-     
+
     it " returns a 302 redirect for invalid trip id" do
       get passenger_path(-1)
 
       must_respond_with 302
     end
-
   end
-
 
   describe "create" do
     it "should create a new trip" do
@@ -40,13 +37,13 @@ describe TripsController do
           date: date,
           cost: cost,
           passenger_id: Passenger.last.id,
-          driver_id: Driver.last.id
-        }
+          driver_id: Driver.last.id,
+        },
       }
- 
+
       expect {
         post trips_path params: trip_hash
-      }.must_change 'Trip.count', 1
+      }.must_change "Trip.count", 1
 
       new_trip = Trip.last
       expect(new_trip).wont_be_nil
@@ -65,13 +62,13 @@ describe TripsController do
           date: date,
           cost: cost,
           passenger_id: 0,
-          driver_id: 1
-        }
+          driver_id: 1,
+        },
       }
- 
+
       expect {
         post trips_path, params: invalid_trip
-      }.wont_change 'Trip.count'
+      }.wont_change "Trip.count"
     end
   end
 
@@ -84,32 +81,32 @@ describe TripsController do
 
     it "should respond with 404 if the trip doesn't exist" do
       get edit_trip_path(-1)
-      
+
       must_respond_with 302
     end
   end
 
   describe "update" do
     trip = Trip.first
-      
+
     trip_hash = {
-       trip: {
+      trip: {
         date: "April 19, 2019",
         cost: 1445,
         passenger_id: Passenger.last.id,
-        driver_id: Driver.last.id
-      }
+        driver_id: Driver.last.id,
+      },
     }
 
     it "should update existing trip" do
-      expect{
-        patch trip_path(trip.id), params:trip_hash
-      }.wont_change 'Trip.count'
+      expect {
+        patch trip_path(trip.id), params: trip_hash
+      }.wont_change "Trip.count"
 
       must_respond_with :redirect
     end
 
-    # it "should redirect to the edit page if given an invalid trip " do 
+    # it "should redirect to the edit page if given an invalid trip " do
     #   patch trip_path(-1), params: trip_hash
 
     #   must_respond_with :redirect
@@ -117,7 +114,7 @@ describe TripsController do
   end
 
   describe "destroy" do
-    it "can delete a trip" do 
+    it "can delete a trip" do
       expect {
         delete trip_path(Trip.first.id)
       }.must_change "Trip.count", -1

@@ -63,4 +63,17 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/* DRIVERS SHOW */
+/* TABLES */
+
+table, tr {
+  border: 2px solid rgb(117, 53, 155);
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(118, 53, 155, 0.151);
+  color: black;
+}
+
+table td {
+  padding: 10px;
+}

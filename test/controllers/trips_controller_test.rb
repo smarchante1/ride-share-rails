@@ -1,26 +1,26 @@
 require "test_helper"
 
 describe TripsController do
-  before do
-    passenger = Passenger.new(name: "Sample Passenger", phone_number: "123-456-7890")
-    passenger.save
-    driver = Driver.new(name: "Sample Driver", vin: "11111111111111111")
-    driver.save
-    t = Trip.new(passenger_id: passenger.id, driver_id: driver.id, date: Time.now.strftime("%Y-%d-%m"), cost: 13.0, rating: 3)
-    t.save
-  end
 
   describe "show" do
+    before do
+      passenger = Passenger.new(name: "Sample Passenger", phone_number: "123-456-7890")
+      passenger.save
+      driver = Driver.new(name: "Sample Driver", vin: "11111111111111111")
+      driver.save
+      @t = Trip.new(passenger_id: passenger.id, driver_id: driver.id, date: Time.now.strftime("%Y-%d-%m"), cost: 1300, rating: 3)
+      @t.save
+    end
+
     it "can show page for a valid trip" do
-      trip_id = Trip.last.id
 
-      get passenger_path(trip_id)
-
-      must_respond_with 302
+      get passenger_trip_path(@t.passenger_id, @t.id)
+# puts @t.id
+      must_respond_with 200
     end
 
     it " returns a 302 redirect for invalid trip id" do
-      get passenger_path(-1)
+      get passenger_trip_path(@t.passenger_id, -1)
 
       must_respond_with 302
     end
@@ -107,16 +107,24 @@ describe TripsController do
     end
 
     it "should redirect to the edit page if given an invalid trip " do
-      patch trip_path(-1), params: trip_hash
+      patch trip_path(500), params: trip_hash
 
       must_respond_with :redirect
     end
   end
 
   describe "destroy" do
+    before do
+      passenger = Passenger.new(name: "Sample Passenger", phone_number: "123-456-7890")
+      passenger.save
+      driver = Driver.new(name: "Sample Driver", vin: "11111111111111111")
+      driver.save
+      @t2 = Trip.new(passenger_id: passenger.id, driver_id: driver.id, date: Time.now.strftime("%Y-%d-%m"), cost: 1300, rating: 3)
+      @t2.save
+    end  
     it "can delete a trip" do
       expect {
-        delete trip_path(Trip.first.id)
+        delete trip_path(@t2.id)
       }.must_change "Trip.count", -1
 
       must_respond_with :redirect

@@ -3,7 +3,8 @@
 class TripsController < ApplicationController
   def show
     @trip = Trip.find_by(id: params[:id])
-    unless !@trip.nil?
+    if @trip.nil? 
+    # unless !@trip.nil?
       redirect_to trips_path
     end
   end
@@ -40,14 +41,23 @@ class TripsController < ApplicationController
   end
 
   def update
-    trip = Trip.find(params[:id])
-    is_successful = trip.update(trip_params)
+    trip = Trip.find_by(id: params[:id])
 
-    if is_successful
-      redirect_to passenger_path(trip.passenger_id)
-    else
+    if @trip.nil?
       redirect_to trips_path
+    else
+      trip.update(trip_params)
+      redirect_to passenger_path(trip.passenger_id)
     end
+
+    # if is_successful
+    #   redirect_to passenger_path(trip.passenger_id)
+    # else
+    #   redirect_to trips_path
+    # end
+
+  
+
   end
 
   def destroy
